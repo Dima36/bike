@@ -3,16 +3,24 @@ angular.module('APP')
         return {
             link: function (scope, element, attr) {
 
-                var contentHeight = $("#map").height(),
-                    contentWidth = $("#map").width(),
-                    greetingTop = (contentHeight - element.outerHeight()) / 2,
-                    greetingLeft = (contentWidth - element.outerWidth()) / 2;
+                function resize() {
+                    var contentHeight = $("#map").height(),
+                        contentWidth = $("#map").width(),
+                        greetingTop = (contentHeight - element.outerHeight() - 200) / 2,
+                        greetingLeft = (contentWidth - element.outerWidth()) / 2;
 
 
-                element.css({
-                    top: greetingTop,
-                    left: greetingLeft
+                    element.css({
+                        top: greetingTop,
+                        left: greetingLeft
+                    });
+                };
+
+                $(window).resize(function () {
+                    resize();
                 });
+
+                resize();
             }
         };
     }])
@@ -25,9 +33,15 @@ angular.module('APP')
                 function resize() {
                     var height = $(window).height();
 
-                    element.css({
-                        height: height - headerHeight
-                    });
+                    if (height <= 400) {
+                        element.css({
+                            height: 400
+                        });
+                    } else {
+                        element.css({
+                            height: height - headerHeight
+                        });
+                    }
                 }
 
                 $(window).resize(function () {

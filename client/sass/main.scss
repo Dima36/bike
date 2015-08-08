@@ -105,61 +105,57 @@ header {
     position: absolute;
     top: 72px;
     left: 0;
-    .greeting {
+    .content-page {
         position: absolute;
+        background: #fff;
         padding: 20px;
-        width: 600px;
-        @include box-shadow(5px 6px 10px rgba(0, 0, 0, 0.2));
-        background: #fff;
-        top: 20px;
-        left: 20px;
-        font-size: 15px;
-        line-height: 23px;
-    }
-    .events-content {
-        position: absolute;
-        width: 900px;
-        @include box-shadow(0 0 10px rgba(0, 0, 0, 0.5));
-        background: #fff;
-        .list {
-            float: left;
-            width: 66%;
-            border-right: 1px solid #f4f4f4;
-            padding: 20px 2% 0;
-        }
-        .sort {
-            float: right;
-            width: 25.8%;
-            padding: 20px 2%;
-        }
-    }
-    .routes-nav {
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 20px 0;
-        @include box-shadow(5px 6px 10px rgba(0, 0, 0, 0.2));
-        background: #fff;
         z-index: 10;
-        min-width: 200px;
-        border-top: 1px solid #f4f4f4;
-        h2 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-left: 20px;
+        @include box-shadow(5px 6px 10px rgba(0, 0, 0, 0.2));
+        &.greeting {
+            width: 600px;
+            top: 20px;
+            left: 20px;
+            font-size: 15px;
+            line-height: 23px;
         }
-        ul {
-            margin-top: 15px;
-            li {
-                font-size: 14px;
-                padding: 10px 0px;
-                padding-left: 20px;
-                border-right: 3px solid #fff;
-                cursor: pointer;
-                @include transition(all 0.4s);
-                &:hover {
-                    color: #ff7043;
-                    border-right: 3px solid #ff7043;
+        &.events-content {
+            width: 900px;
+            .list {
+                float: left;
+                width: 66%;
+                border-right: 1px solid #f4f4f4;
+                padding: 20px 2% 0;
+            }
+            .sort {
+                float: right;
+                width: 25.8%;
+                padding: 20px 2%;
+            }
+        }
+        &.routes-nav {
+            top: 0;
+            left: 0;
+            padding: 20px 0;
+            min-width: 200px;
+            border-top: 1px solid #f4f4f4;
+            h2 {
+                font-size: 18px;
+                font-weight: 700;
+                margin-left: 20px;
+            }
+            ul {
+                margin-top: 15px;
+                li {
+                    font-size: 14px;
+                    padding: 10px 0px;
+                    padding-left: 20px;
+                    border-right: 3px solid #fff;
+                    cursor: pointer;
+                    @include transition(all 0.4s);
+                    &:hover {
+                        color: #ff7043;
+                        border-right: 3px solid #ff7043;
+                    }
                 }
             }
         }
@@ -168,7 +164,6 @@ header {
 
 #map {
     z-index: 1;
-
 }
 
 footer {

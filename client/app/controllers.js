@@ -19,7 +19,7 @@ angular.module('APP')
                     latlngs: [{
                         lat: 0,
                         lng: 0
-                }]
+                    }]
                 }
             },
             layers: {
@@ -69,19 +69,16 @@ angular.module('APP')
             layers: {
                 baselayers: mapdefaults.layers.route
             },
-            paths: {
-                route: {
+            route: {
+                p1: {
                     color: 'red',
                     weight: 8,
-                    latlngs: [{
-                        lat: 0,
-                        lng: 0
-                }]
+                    latlngs: []
                 }
             }
         });
 
-
+        console.log();
 
         // Map path switcher
         $rootScope.$on("$locationChangeStart", function () {
@@ -95,33 +92,30 @@ angular.module('APP')
             }
         });
 
-
-        // Map data
-        $http.get('data/routes.json').success(function (data) {
-            $scope.mapContent = data;
+        $http.get("data/data.json").success(function (response) {
+            $scope.mapContent = response;
         });
-
 
 
 
         $scope.loadRoute = function loadRoute(roadName) {
             var data = $scope.mapContent[roadName];
 
+            $scope.i = 0;
+            $scope.route.p1.latlngs = [];
+            angular.forEach(data.latlngs, function () {
+                $scope.route.p1.latlngs.push({
+                    lat: data.latlngs[$scope.i][1],
+                    lng: data.latlngs[$scope.i][0]
+                });
+                $scope.i++
+            });
+
             $scope.title = data.title;
             $scope.complexity = data.complexity;
             $scope.info = data.info;
             $scope.frankivsk = data.location;
-            $scope.paths.route.latlngs = data.latlngs;
 
-
-
-
-
-            console.log($scope.title);
-            console.log($scope.complexity);
-            console.log($scope.info);
-
-            console.log(data.latlngs);
         };
 }]);
 
