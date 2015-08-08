@@ -1,0 +1,25 @@
+<head>
+    <base href="/">
+    <title>ВелоФранківськ</title>
+</head>
+
+<body data-ng-app="APP">
+    <header class="clearfix">
+        <a data-ui-sref="home">
+            <h1>
+                <span class="logo">Вело<span>Франківськ</span></span>
+            </h1>
+        </a>
+        <nav class="clearfix" data-ng-controller="NavCtrl">
+            <a data-ui-sref="infrastruktura" data-ng-class="{ active: isActive('/infrastruktura') }">Інфраструктура</a>
+            <a data-ui-sref="routes" data-ng-class="{ active: isActive('/routes') }">Маршрути</a>
+            <a data-ui-sref="events" data-ng-class="{ active: isActive('/events') }">Події</a>
+            <a data-ui-sref="bike-rent" data-ng-class="{ active: isActive('/bike-rent') }">Прокат велосипедів</a>
+            <div class="line"></div>
+        </nav>
+    </header>
+    <div class="map" data-ng-controller="MainCtrl">
+        <div class="content reveal-animation" data-ui-view></div>
+        <leaflet id="map" data-map-resize center="frankivsk" layers="layers" maxbounds="maxbounds" controls="controls" paths="paths" defaults="defaults"></leaflet>
+    </div>
+</body>

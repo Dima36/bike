@@ -1,0 +1,204 @@
+/** Reset default styles **/
+
+@import "compass";
+@import "compass/reset";
+/** Add fonts **/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700&subset=latin,cyrillic);
+/** General styles **/
+
+$orange: #FF3D00;
+$yellow: #FFD600;
+$text-color: #1c1c1c;
+$link-color: #37b3dc;
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    color: $text-color;
+    min-width: 980px;
+}
+
+a {
+    color: $link-color;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.clearfix {
+    *zoom: 1;
+    &:before, &:after {
+        display: table;
+        line-height: 0;
+        content: "";
+    }
+    &:after {
+        clear: both;
+    }
+}
+/** Header **/
+
+header {
+    min-width: 480px;
+    position: relative;
+    z-index: 10;
+    padding: 0 25px;
+    background: #fff;
+    @include box-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
+    .logo {
+        float: left;
+        color: $yellow;
+        font-size: 25px;
+        margin-top: 21px;
+        font-weight: 700;
+        span {
+            color: $orange;
+        }
+    }
+    nav {
+        float: right;
+        padding: 5px 0;
+        a {
+            float: left;
+            text-transform: uppercase;
+            font-size: 12px;
+            padding: 25px 15px;
+            letter-spacing: 1px;
+            margin-left: 15px;
+            cursor: pointer;
+            color: #656565;
+            font-weight: 700;
+            @include transition(0.3s);
+            &:first-child {
+                margin-left: 0;
+            }
+            &:hover,
+            &.active {
+                color: $orange;
+            }
+        }
+        .line {
+            width: 0;
+            left: 0;
+            position: absolute;
+            bottom: 0;
+            background: $orange;
+            height: 5px;
+            @include transition(all 0.8s);
+        }
+    }
+}
+/** Footer **/
+
+.content {
+    z-index: 10;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    .greeting {
+        position: absolute;
+        padding: 20px;
+        width: 600px;
+        @include box-shadow(5px 6px 10px rgba(0, 0, 0, 0.2));
+        background: #fff;
+        top: 20px;
+        left: 20px;
+        font-size: 15px;
+        line-height: 23px;
+    }
+    .events-content {
+        position: absolute;
+        width: 900px;
+        @include box-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+        background: #fff;
+        .list {
+            float: left;
+            width: 66%;
+            border-right: 1px solid #f4f4f4;
+            padding: 20px 2% 0;
+        }
+        .sort {
+            float: right;
+            width: 25.8%;
+            padding: 20px 2%;
+        }
+    }
+    .routes-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 20px 0;
+        @include box-shadow(5px 6px 10px rgba(0, 0, 0, 0.2));
+        background: #fff;
+        z-index: 10;
+        min-width: 200px;
+        border-top: 1px solid #f4f4f4;
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: 20px;
+        }
+        ul {
+            margin-top: 15px;
+            li {
+                font-size: 14px;
+                padding: 10px 0px;
+                padding-left: 20px;
+                border-right: 3px solid #fff;
+                cursor: pointer;
+                @include transition(all 0.4s);
+                &:hover {
+                    color: #ff7043;
+                    border-right: 3px solid #ff7043;
+                }
+            }
+        }
+    }
+}
+
+#map {
+    z-index: 1;
+
+}
+
+footer {
+    text-align: center;
+    background: green;
+    padding: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include border-radius(5px);
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused {
+    .md-input {
+        border-color: $orange;
+    }
+    label {
+        color: $orange;
+    }
+}
+
+.leaflet-map-pane {
+    z-index: 2 !important;
+}
+
+.leaflet-google-layer {
+    z-index: 1 !important;
+}
+
+.leaflet-control-layers {
+    display: none;
+}
